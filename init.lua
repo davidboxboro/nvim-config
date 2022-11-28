@@ -1,13 +1,18 @@
 -- init.lua
 
-require('packer').startup(function()
+--[[
+--
+--
+--]]
+
+require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
     use 'EdenEast/nightfox.nvim'
 
     use 'williamboman/mason.nvim'
     use 'williamboman/mason-lspconfig.nvim'
     use 'neovim/nvim-lspconfig'
-   
+
     use 'hrsh7th/cmp-nvim-lsp'
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/cmp-path'
@@ -27,7 +32,7 @@ vim.bo.softtabstop = 4
 vim.cmd('colorscheme nightfox')
 vim.wo.signcolumn = 'yes'
 vim.wo.number = true
-vim.wo.relativenumber = false 
+vim.wo.relativenumber = false
 
 -- Key mappings
 local map = vim.api.nvim_set_keymap
