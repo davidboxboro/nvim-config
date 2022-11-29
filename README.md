@@ -6,4 +6,4 @@ Config directory (~/.config/nvim) for Neovim
 2. Install packer.nvim (nvim package manager)
 3. Clone repo into ~/.config/nvim
 4. Run :PackerSync inside nvim to install nvim packages
-5. Run :Mason to install any missing language servers
+5. Run :Mason inside nvim to install any missing language servers
