@@ -100,7 +100,13 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 -- Set up each lsp server
 local lspconfig = require('lspconfig')
 
-lspconfig['pyright'].setup({
+lspconfig['pylsp'].setup({
+    capabilities = capabilities,
+    on_attach = on_attach,
+    flags = lsp_flags,
+})
+
+lspconfig['bashls'].setup({
     capabilities = capabilities,
     on_attach = on_attach,
     flags = lsp_flags,
