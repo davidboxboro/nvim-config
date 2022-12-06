@@ -5,6 +5,14 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+-- vim-plug
+local Plug = vim.fn['plug#']
+vim.call('plug#begin', '~/.config/nvim/plugged')
+Plug 'takac/vim-hardtime' -- stop using hjkl
+vim.g.hardtime_default_on = 1
+vim.call('plug#end')
+
+-- packer
 require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'            -- required
     use 'EdenEast/nightfox.nvim'            -- color scheme
@@ -29,12 +37,14 @@ require('packer').startup(function(use)
       },
       tag = 'nightly' -- optional, updated every week (see issue #1193)
     }
-end)
 
--- tabbing
-vim.bo.expandtab = true
-vim.bo.shiftwidth = 4
-vim.bo.softtabstop = 4
+    use {
+        'windwp/nvim-autopairs',
+        config = function()
+            require('nvim-autopairs').setup()
+        end
+    }
+end)
 
 -- color scheme
 vim.cmd('colorscheme nightfox')
@@ -47,8 +57,7 @@ local map = vim.api.nvim_set_keymap
 map('n', '<c-s>', ':w<CR>', {})
 map('i', '<c-s>', '<Esc>:w<CR>', {})
 
-map('i', '<up>', '<nop>', {})
-map('i', '<down>', '<nop>', {})
+map('i', '<up>', '<nop>', {}) map('i', '<down>', '<nop>', {})
 map('i', '<left>', '<nop>', {})
 map('i', '<right>', '<nop>', {})
 
@@ -56,6 +65,19 @@ map('n', '<up>', '<nop>', {})
 map('n', '<down>', '<nop>', {})
 map('n', '<left>', '<nop>', {})
 map('n', '<right>', '<nop>', {})
+
+-- tabbing
+-- make sure it is applied every time buffer is opened
+local group = vim.api.nvim_create_augroup('all', {});
+vim.api.nvim_create_autocmd('BufEnter', {
+    group = group,
+    callback = function()
+        vim.bo.expandtab = true
+        vim.bo.shiftwidth = 4
+        vim.bo.tabstop = 4
+        vim.bo.softtabstop = 4
+    end
+})
 
 -- lsp
 require('mason').setup()
@@ -65,5 +87,4 @@ require('lsp')
 -- tree
 vim.opt.termguicolors = true -- set termguicolors to enable highlight groups
 require('nvim-tree').setup() -- empty setup using defaults
-
 
