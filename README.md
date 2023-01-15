@@ -10,7 +10,7 @@ Config directory (~/.config/nvim) for Neovim
 6. If you are using ``python-lsp-server``, in ``~/.config/pycodestyle`` you can do some customization:
 ```
 [pycodestyle]
-max-line-length = 90
+max-line-length = 130
 [flake8]
-max-complexity = 25
+max-complexity = 100
 ```
