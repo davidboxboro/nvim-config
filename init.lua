@@ -9,6 +9,7 @@ vim.g.loaded_netrwPlugin = 1
 local Plug = vim.fn['plug#']
 vim.call('plug#begin', '~/.config/nvim/plugged')
 Plug 'takac/vim-hardtime' -- stop using hjkl
+Plug 'junegunn/fzf'
 vim.call('plug#end')
 
 -- packer
@@ -43,17 +44,18 @@ require('packer').startup(function(use)
             require('nvim-autopairs').setup()
         end
     }
+--    use { "junegunn/fzf.vim" }               -- fzf (fuzzy file finder)
 end)
 
 -- vim-hardtime
-vim.g.hardtime_default_on = 1
+vim.g.hardtime_default_on = 0
 vim.g.hardtime_maxcount = 0
 
 -- color scheme
 vim.cmd('colorscheme nightfox')
 vim.wo.signcolumn = 'yes'
 vim.wo.number = true
-vim.wo.relativenumber = false
+vim.wo.relativenumber = true
 
 -- key mappings
 local map = vim.api.nvim_set_keymap
@@ -61,15 +63,15 @@ map('n', '<c-s>', ':w<CR>', {})
 map('i', '<c-s>', '<Esc>:w<CR>', {})
 
 -- disable arrow keys (unnecessary if vim-hardtime enabled)
--- map('i', '<up>', '<nop>', {})
--- map('i', '<down>', '<nop>', {})
--- map('i', '<left>', '<nop>', {})
--- map('i', '<right>', '<nop>', {})
--- 
--- map('n', '<up>', '<nop>', {})
--- map('n', '<down>', '<nop>', {})
--- map('n', '<left>', '<nop>', {})
--- map('n', '<right>', '<nop>', {})
+map('i', '<up>', '<nop>', {})
+map('i', '<down>', '<nop>', {})
+map('i', '<left>', '<nop>', {})
+map('i', '<right>', '<nop>', {})
+
+map('n', '<up>', '<nop>', {})
+map('n', '<down>', '<nop>', {})
+map('n', '<left>', '<nop>', {})
+map('n', '<right>', '<nop>', {})
 
 -- tabbing
 -- make sure it is applied every time buffer is opened
