@@ -59,8 +59,9 @@ vim.wo.relativenumber = true
 
 -- key mappings
 local map = vim.api.nvim_set_keymap
-map('n', '<c-s>', ':w<CR>', {})
-map('i', '<c-s>', '<Esc>:w<CR>', {})
+map('n', '<c-s>', ':w<CR>', {}) -- saving
+map('i', '<c-s>', '<Esc>:w<CR>', {}) -- saving
+map('i', 'jk', '<Esc>', {}) -- escape
 
 -- disable arrow keys (unnecessary if vim-hardtime enabled)
 map('i', '<up>', '<nop>', {})
