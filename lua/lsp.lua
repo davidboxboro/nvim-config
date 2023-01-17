@@ -106,6 +106,22 @@ lspconfig['pylsp'].setup({
     capabilities = capabilities,
     on_attach = on_attach,
     flags = lsp_flags,
+    settings = {
+        pylsp = {
+            plugins = {
+                pycodestyle = {
+                    ignore = {'W391'},
+                    maxLineLength = 150,
+                },
+                pyflakes = {
+                    enabled = true,
+                },
+                mccabe = {
+                    threshold = 100,
+                }
+            }
+        }
+    }
 })
 
 lspconfig['bashls'].setup({

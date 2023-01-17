@@ -8,8 +8,12 @@ vim.g.loaded_netrwPlugin = 1
 -- vim-plug
 local Plug = vim.fn['plug#']
 vim.call('plug#begin', '~/.config/nvim/plugged')
+
 Plug 'takac/vim-hardtime' -- stop using hjkl
+
 Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+
 vim.call('plug#end')
 
 -- packer
