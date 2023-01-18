@@ -62,10 +62,11 @@ vim.wo.number = true
 vim.wo.relativenumber = true
 
 -- key mappings
-local map = vim.api.nvim_set_keymap
+local map = vim.keymap.set
 map('n', '<c-s>', ':w<CR>', {}) -- saving
 map('i', '<c-s>', '<Esc>:w<CR>', {}) -- saving
 map('i', 'jk', '<Esc>', {}) -- escape
+map('v', 'jk', '<Esc>', {}) -- escape
 
 -- disable arrow keys (unnecessary if vim-hardtime enabled)
 map('i', '<up>', '<nop>', {})
@@ -99,4 +100,5 @@ require('lsp')
 -- tree
 vim.opt.termguicolors = true -- set termguicolors to enable highlight groups
 require('nvim-tree').setup() -- empty setup using defaults
+
 
