@@ -14,6 +14,8 @@ Plug 'takac/vim-hardtime' -- stop using hjkl
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 
+Plug('ojroques/vim-oscyank', {branch = 'main'})
+
 vim.call('plug#end')
 
 -- packer
@@ -48,7 +50,6 @@ require('packer').startup(function(use)
             require('nvim-autopairs').setup()
         end
     }
---    use { "junegunn/fzf.vim" }               -- fzf (fuzzy file finder)
 end)
 
 -- vim-hardtime
@@ -60,6 +61,15 @@ vim.cmd('colorscheme nightfox')
 vim.wo.signcolumn = 'yes'
 vim.wo.number = true
 vim.wo.relativenumber = true
+
+--python indenting
+vim.cmd([[
+let g:python_indent = {}
+let g:python_indent.open_paren = 'shiftwidth()'
+let g:python_indent.nested_paren = 'shiftwidth()'
+let g:python_indent.continue = 'shiftwidth()'
+let g:python_indent.closed_paren_align_last_line = v:false
+]])
 
 -- key mappings
 local map = vim.keymap.set
