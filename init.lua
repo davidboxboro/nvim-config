@@ -14,7 +14,7 @@ Plug 'takac/vim-hardtime' -- stop using hjkl
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 
-Plug('ojroques/vim-oscyank', {branch = 'main'})
+-- Plug('ojroques/vim-oscyank', {branch = 'main'})
 
 vim.call('plug#end')
 
@@ -50,6 +50,7 @@ require('packer').startup(function(use)
             require('nvim-autopairs').setup()
         end
     }
+    use {'ojroques/nvim-osc52'}
 end)
 
 -- vim-hardtime
@@ -62,7 +63,7 @@ vim.wo.signcolumn = 'yes'
 vim.wo.number = true
 vim.wo.relativenumber = true
 
---python indenting
+-- python indenting
 vim.cmd([[
 let g:python_indent = {}
 let g:python_indent.open_paren = 'shiftwidth()'
@@ -71,8 +72,13 @@ let g:python_indent.continue = 'shiftwidth()'
 let g:python_indent.closed_paren_align_last_line = v:false
 ]])
 
--- key mappings
+-- copy to local clipboard
 local map = vim.keymap.set
+map('n', '<leader>c', require('osc52').copy_operator, {expr = true})
+map('n', '<leader>cc', '<leader>c_', {remap = true})
+map('x', '<leader>c', require('osc52').copy_visual)
+
+-- key mappings
 map('n', '<c-s>', ':w<CR>', {}) -- saving
 map('i', '<c-s>', '<Esc>:w<CR>', {}) -- saving
 map('i', 'jk', '<Esc>', {}) -- escape
