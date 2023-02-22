@@ -102,7 +102,7 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 -- Set up each lsp server
 local lspconfig = require('lspconfig')
 
-lspconfig['pylsp'].setup({
+lspconfig['pyright'].setup({
     capabilities = capabilities,
     on_attach = on_attach,
     flags = lsp_flags,
@@ -130,7 +130,7 @@ lspconfig['bashls'].setup({
     flags = lsp_flags,
 })
 
-lspconfig['sumneko_lua'].setup({
+lspconfig['lua_ls'].setup({
     capabilities = capabilities,
     on_attach = on_attach,
     flags = lsp_flags,
@@ -142,7 +142,7 @@ lspconfig['clangd'].setup({
     flags = lsp_flags,
 })
 
-lspconfig.sumneko_lua.setup({
+lspconfig.lua_ls.setup({
   settings = {
     Lua = {
       diagnostics = {
