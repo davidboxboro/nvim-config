@@ -14,7 +14,13 @@ Plug 'takac/vim-hardtime' -- stop using hjkl
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 
--- Plug('ojroques/vim-oscyank', {branch = 'main'})
+-- Plug 'sbdchd/neoformat'
+
+-- Plug('prettier/vim-prettier', {
+--     ['do'] = 'yarn install --frozen-lockfile --production',
+--     ['for'] = {'javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'}
+-- })
+Plug('prettier/vim-prettier', { ['do'] = 'yarn install --frozen-lockfile --production'})
 
 vim.call('plug#end')
 
