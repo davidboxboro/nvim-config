@@ -142,6 +142,12 @@ lspconfig['clangd'].setup({
     flags = lsp_flags,
 })
 
+lspconfig['tsserver'].setup({
+    capabilities = capabilities,
+    on_attach = on_attach,
+    flags = lsp_flags,
+})
+
 lspconfig.sumneko_lua.setup({
   settings = {
     Lua = {
