@@ -142,7 +142,6 @@ lspconfig['clangd'].setup({
     flags = lsp_flags,
 })
 
-<<<<<<< HEAD
 lspconfig['tsserver'].setup({
     capabilities = capabilities,
     on_attach = on_attach,

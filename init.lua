@@ -14,12 +14,6 @@ Plug 'takac/vim-hardtime' -- stop using hjkl
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 
--- Plug 'sbdchd/neoformat'
-
--- Plug('prettier/vim-prettier', {
---     ['do'] = 'yarn install --frozen-lockfile --production',
---     ['for'] = {'javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'}
--- })
 Plug('prettier/vim-prettier', { ['do'] = 'yarn install --frozen-lockfile --production'})
 
 vim.call('plug#end')
@@ -122,5 +116,3 @@ require('lsp')
 -- tree
 vim.opt.termguicolors = true -- set termguicolors to enable highlight groups
 require('nvim-tree').setup() -- empty setup using defaults
-
-
