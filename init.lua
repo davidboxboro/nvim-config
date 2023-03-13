@@ -69,6 +69,12 @@ require('lazy').setup({
   -- Copy text to system clipboard
   'ojroques/nvim-osc52',
 
+  -- Show open buffers
+  {
+    'akinsho/bufferline.nvim',
+    requires = 'nvim-tree/nvim-web-devicons'
+  },
+
   -- Git related plugins
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
@@ -261,6 +267,10 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
+
+-- [[Configure Bufferline ]]
+vim.opt.termguicolors = true
+require('bufferline').setup {}
 
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
