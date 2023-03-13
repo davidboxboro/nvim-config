@@ -121,13 +121,20 @@ require('lazy').setup({
     },
   },
 
-  { -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'onedark'
-    end,
+  {
+    'EdenEast/nightfox.nvim',
+     config = function()
+       vim.cmd.colorscheme 'nightfox'
+     end,
   },
+
+  -- { -- Theme inspired by Atom
+  --   'navarasu/onedark.nvim',
+  --   priority = 1000,
+  --   config = function()
+  --     vim.cmd.colorscheme 'onedark'
+  --   end,
+  -- },
 
   { -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
@@ -272,6 +279,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 vim.opt.termguicolors = true
 require('bufferline').setup {}
 
+vim.keymap.set('n', '[b', ':bp<CR>', { desc = "Go to previous buffer" })
+vim.keymap.set('n', ']b', ':bn<CR>', { desc = "Go to next buffer" })
+
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
 require('telescope').setup {
@@ -309,10 +319,10 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'help', 'vim' },
+  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'help', 'vim', 'html', 'css' },
 
   -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
-  auto_install = false,
+  auto_install = true,
 
   highlight = { enable = true },
   indent = { enable = true, disable = { 'python' } },
@@ -427,12 +437,15 @@ end
 --
 --  Add any additional override configuration in the following tables. They will be passed to
 --  the `settings` field of the server config. You must look up that documentation yourself.
+--
+--  List of servers is here: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 local servers = {
-  -- clangd = {},
-  -- gopls = {},
-  -- pyright = {},
+  clangd = {},
+  pyright = {},
+  tsserver = {},
+  html = {},
   -- rust_analyzer = {},
-  -- tsserver = {},
+  -- gopls = {},
 
   lua_ls = {
     Lua = {
